@@ -1,0 +1,37 @@
+﻿@model PagedList.IPagedList<ShopQuanAo.Models.Mpost>
+@foreach (var item in Model)
+{
+    string title = item.detail;
+    <ul class="list-unstyled pagination border-top pt-3">
+        <li><img width="300px;" src="~/public/images/post/@item.img" alt=""></li>
+        <li class="pl-3">
+            <a class="card-link text-dark" href="~/chi-tiet-bai-viet/@item.slug"><h5 class="font-weight-bold ">@item.title</h5></a>
+            <span class="font-13 "><i class="far fa-clock"></i> @item.created_at</span>  <span class="text-danger font-14  font-weight-bold"> Ẩm Thực </span>
+
+            <p class="text-body1 "
+               class="text-cam font-weight-bold card-link " href="">
+              @Html.Raw(item.detail);
+            </p>
+        </li>
+
+    </ul>
+}
+<div class="col-md-12 pt-3">
+    <ul class="pagination pagination-sm justify-content-center">
+        @{ int i = 1;}
+
+        @for (int j = i; j <= Model.PageCount; j++)
+        {
+            <li class="page-item"><a class="page-link text-secondary  active-@j" href="/bai-viet/@ViewBag.slug/?page=@j">@j</a></li>
+            i = j;
+        }
+    </ul>
+</div>
+
+
+<style>
+    .active-@ViewBag.page{
+    background-color: yellow;
+    }
+</style>
+

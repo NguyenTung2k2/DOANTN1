@@ -1,0 +1,42 @@
+﻿@if (Message.has_flash())
+{
+    MessageModel ms = Message.get_flash();
+    <div class="alertContainer position-fixed" style="z-index:100; left:0; bottom:0;">
+        <div class="alert1 ">
+            <div class="icon @ms.msg_css ">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="text">
+                <span>@ms.msg<span>
+            </div>
+            <div class="pl-5">
+                <button type="button" class="close " data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    </div>
+}
+<!-- custom alert ajax-->
+<div id="custom-alert-ajax" class="alertContainer position-fixed" style="z-index:100; left:0; bottom:0; display:none;">
+    <div class="alert1 ">
+        <div id="alert-class" class="icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="text">
+            <span id="alert-mess"><span>
+        </div>
+        <div class="pl-5">
+            <button type="button" class="close " data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    $("#messgeAlert").hide();
+    setTimeout(function () {
+        $(".alertContainer").fadeOut("slow");
+    }, 5000);
+</script>

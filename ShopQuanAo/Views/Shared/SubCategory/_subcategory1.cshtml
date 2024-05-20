@@ -1,0 +1,18 @@
+﻿@model IEnumerable<ShopQuanAo.Models.Mcategory>
+@{ var mainmenuitem = ViewBag.mainmenuitem;}
+<li class="nav-item ">
+    <a class="nav-link collapsed  border-bottom" href="~/sanpham/loaiSP/@mainmenuitem.slug" data-toggle="collapse" data-target="#row_@mainmenuitem.ID">
+        @mainmenuitem.name <i class="fas fa-chevron-down float-right"></i>
+    </a>
+
+    <div class="collapse" id="row_@mainmenuitem.ID" aria-expanded="false">
+        <ul class="flex-column pl-2 nav bg-light">
+            @foreach (var item in Model)
+            {
+                <li class="nav-item border-bottom"><a class="nav-link py-1" href="~/sanpham/loaiSP/@item.slug">@item.name </a></li>
+            }
+
+
+        </ul>
+    </div>
+</li>

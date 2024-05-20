@@ -1,0 +1,61 @@
+﻿@model List<ShopQuanAo.Models.Cart_item>
+
+<li id="cart-header" class="d-inline-block dropdown1">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span class="glyphicon glyphicon-shopping-cart"></span><i class="fas fa-shopping-cart"> </i> Giỏ hàng <span id="count-cart-header" class="badge1 ">@Model.Count()</span><span class="caret"></span></a>
+
+    <div class="dropdown-menu w-100 ">
+        <div class="row total-header-section  px-3">
+            <div class="col-lg-6 col-sm-6 col-6">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span id="count-cart-nav" class="badge badge-pill badge-danger badge1">@Model.Count()</span>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-6 total-section text-right">
+                <p>Tổng tiền: <span id="totalPrice" class="text-info">@ViewBag.CartTotal.ToString("N0") VND</span></p>
+            </div>
+        </div>
+        <ul class="overflow-auto1 ">
+            @{ float sum = 0;
+            }
+            @foreach (var iten in Model)
+            {
+                int sale = (int)iten.product.pricesale;
+                float price = ((int)iten.product.price - (int)iten.product.price / 100 * (int)sale);
+                float price1 = ((int)iten.product.price - (int)iten.product.price / 100 * (int)sale) * (iten.quantity);
+                float priveNsale = (int)iten.product.price * iten.quantity;
+                if (sale > 0)
+                {
+                    sum += ((int)iten.product.price - (int)iten.product.price / 100 * (int)sale) * ((int)iten.quantity);
+                }
+                else
+                {
+                    sum += (int)iten.product.price * (int)iten.quantity;
+                }
+                <li class=" row cart-detail border-bottom position-relative">
+
+                    <div class="col-sm-4 cart-detail-img ">
+                        <img src="~/public/images/@iten.product.img">
+                    </div>
+                    <div class="col-sm-8  cart-detail-product">
+                        <a href="~/sanpham/chitiet-sp/@iten.product.slug"><p>@iten.product.name</p></a>
+                        @if (sale > 0)
+                        {
+                            <span><strike> @iten.product.price.ToString("N0") VND <br> </strike> </span>
+                            <span id="price_@iten.product.ID" class="price text-cam">@price.ToString("N0") VND</span>
+
+                        }
+                        else
+                        {
+                            <span id="price_@iten.product.ID" class="price text-cam">@iten.product.price.ToString("N0") VND</span>
+                        }
+                        <span> x </span>
+                        <span id="quantity_@iten.product.ID" class="price text-info">@iten.quantity  </span> = <span class="text-info" id="sum_@iten.product.ID">@price1.ToString("N0") VND</span>
+                    </div>
+                </li>
+            }
+        </ul>
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-12 text-center checkout">
+                <a href="~/gio-hang"><button class="btn bg-cam btn-button-cart float-right">Xem giỏ hàng</button></a>
+            </div>
+        </div>
+    </div>
+</li>

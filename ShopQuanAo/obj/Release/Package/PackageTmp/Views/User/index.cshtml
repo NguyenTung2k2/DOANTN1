@@ -1,0 +1,65 @@
+﻿@model ShopQuanAo.Models.Muser
+
+@{
+    ViewBag.Title = "San pham";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+@Html.Action("Mainmenu", "module")
+
+<a href="#">@ViewBag.fullname</a>
+<section class="container-fluid pt-3">
+    <div class=" container bg-white pt-3">
+        <divc class="row">
+            <div class="col-md-6 border-right">
+                <h4 class="font-weight-bold text-cam border-bottom pb-2"> Thông Tin Tài Khoảng</h4>
+                @using (Html.BeginForm("Edit", "User", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(model => model.ID)
+                    @Html.HiddenFor(model => model.created_at)
+                    @Html.HiddenFor(model => model.created_by)
+                    @Html.HiddenFor(model => model.img)
+                    @Html.HiddenFor(model => model.password)
+                    @Html.HiddenFor(model => model.gender)
+                    @Html.HiddenFor(model => model.status)
+                    @Html.HiddenFor(model => model.username)
+                    <div class=" row ">
+                        <div class="col-md-12">
+                            <div>
+                                <label for="psw"><span >Tên đầy đủ</span></label>
+                                @Html.EditorFor(model => model.fullname)
+                                @Html.ValidationMessageFor(model => model.fullname, "", new { @class = "text-danger" })
+                            </div>
+                            <div>
+                                <label for="psw"><span >Tên đăng nhập</span></label>
+                                @Html.EditorFor(model => model.username, new { htmlAttributes = new { @disabled = "disabled" } })
+                                @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+
+                            </div>
+
+                            <div>
+                                <label for="psw"><span >Email của bạn</span></label>
+                                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @type = "email" } })
+                                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                            </div>
+                            <div>
+                                <label for="psw"><span >Số điện thoại</span></label>
+                                @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @type = "number" } })
+                                @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                            </div>
+                            <a href="~/doi-mat-khau/@Model.ID"><span class="text-danger">Đổi mật khẩu</span></a>
+                        </div>
+                    </div>
+                    <div class="pb-3 float-right">
+                        <button class="btn btn-sm bg-success text-white"><i class="far fa-save"></i> Cập nhật</button>
+                    </div>
+                }
+            </div>
+            <div class="col-md-6">
+                <h4 class="font-weight-bold text-cam border-bottom pb-2"> Sản phẩm đã thích</h4>
+
+                @Html.Action("favoriteList", "FavoriteProduct")
+</divc>
+
+    </div>
+    </div>

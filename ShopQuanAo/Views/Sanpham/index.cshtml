@@ -1,0 +1,88 @@
+﻿@model PagedList.IPagedList<ShopQuanAo.Models.Mproduct>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "San pham";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+@Html.Action("Mainmenu", "module")
+
+<section class="container-fluid pt-3">
+    <div class="container ">
+        <div class="row">
+            <div class="col-md-3">
+                @Html.Action("Listcategory", "module")
+            </div>
+            <div class="col-md-9">
+                <div class="card ">
+                    <h3 class="card-header text-xanhduong bg-white">Tất Cả Sản Phẩm</h3>
+                    <div class="card-body">
+                        <div class="row">
+                            @foreach (var item in Model)
+                            {
+                                int sale = (int)item.pricesale;
+                                float price = (int)item.price - (int)item.price / 100 * (int)sale;
+                                if (sale > 0)
+                                {
+                                    <div class="col-md-3 py-2 ">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="position-relative">
+                                                    <div class="arrow-up">
+                                                        <span class=" text-white pl-3">-@sale%</span>
+                                                    </div>
+                                                    <a href="~/sanpham/chitiet-sp/@item.slug"><img class="card-img-top" src="~/public/images/@item.img" alt="Card image"></a>
+                                                </div>
+                                                <div class="card-title text-dark pt-1"><h6><a href="~/sanpham/chitiet-sp/@item.slug" class="text-danger">@item.name</a></h6></div>
+                                                <div class="card-title text-dark">
+                                                    <h6 class="font-weight-bold"><strike> @item.price.ToString("N0") VND </strike></h6>
+                                                    <h6 class="font-weight-bold text-danger"> @price.ToString("N0") VND</h6>
+                                                    <button id="addcartH" onclick="addcart(@item.ID)" class="btn-button-cart w-100  bg-warning"><i class="fas fa-cart-plus"></i> Mua Ngay</button>
+                                                    <input type="hidden" value="1" id="sel1" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="col-md-3 py-2 ">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="position-relative">
+                                                    <a href="~/sanpham/chitiet-sp/@item.slug"><img class="card-img-top" src="~/public/images/@item.img" alt="Card image"></a>
+                                                </div>
+                                                <div class="card-title text-dark pt-1"><h6><a href="~/sanpham/chitiet-sp/@item.slug" class="text-danger">@item.name</a></h6></div>
+                                                <div class="card-title text-dark">
+                                                    <h6 class="font-weight-bold text-orange"> @item.price.ToString("N0") VND </h6>
+                                                    <button id="addcartH" onclick="addcart(@item.ID)" class="btn-button-cart w-100  bg-warning"><i class="fas fa-cart-plus"></i> Mua Ngay</button>
+                                                    <input type="hidden" value="1" id="sel1" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+
+                        </div>
+
+                    </div>
+                    <ul class="pagination pagination-sm justify-content-center">
+                        @{ int i = 1;}
+                       
+                        @for (int j = i; j <= Model.PageCount; j++)
+                        {
+                            <li class="page-item"><a class="page-link text-secondary  active-@j" href="/sanpham/?page=@j">@j</a></li>
+                            i = j;
+                        }
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+    .active-@ViewBag.page{
+    background-color: yellow;
+    }
+</style>

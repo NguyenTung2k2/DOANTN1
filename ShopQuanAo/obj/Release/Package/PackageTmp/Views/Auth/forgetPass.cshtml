@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Trang Chu";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+@Html.Action("Mainmenu", "module")
+<section class="pt-5 pb-5">
+
+
+    <div class="container bg-white card ">
+        <h4 class="text-cam font-weight-bold text-center pt-2"> Quên Mật Khẩu</h4>
+        <div class="row justify-content-center pt-5 pb-5">
+            <div class="col-md-6  text-center">
+                <form action="/send-mail-to-user" method="post">
+                    <label><b>Tên đăng nhập của bạn</b></label>
+                    <input type="text" name="username" required>
+                    <span class="text-danger">@ViewBag.mess</span>
+                    <div class="container">
+                        <button type="submit" class="btn-button bg-danger">Lấy mật khẩu</button>
+                    </div>
+                    <div class="mt-5" >
+                        <span > lưu ý: Bạn nhập vào tên đăng nhập và chúng tôi sẽ gửi mật khẩu đến tài khảng của bạn</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    @ViewBag.username;
+
+
+</section>

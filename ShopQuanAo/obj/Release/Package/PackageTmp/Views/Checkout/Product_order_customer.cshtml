@@ -1,0 +1,9 @@
+﻿@model ShopQuanAo.Models.Mproduct
+<tr>
+    <td>@Model.ID</td>
+    <td class="details">@Model.name</td>
+    <td class="price text-center">@Model.price</td>
+    <td class="price text-center"><?php echo $pr['quantity'];  ?></td>
+    <td class="price text-center"><?php echo $money_item  ?></td>
+    <td class="thumb"><img src="public/img/<?php echo $pp['img']?>" alt=""></td>
+</tr>

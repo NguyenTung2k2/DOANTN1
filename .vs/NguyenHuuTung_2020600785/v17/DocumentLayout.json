@@ -1,0 +1,103 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\David\\NguyenHuuTung_2020600785\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{767EAD24-7BA6-4F95-823E-1000A85D1E2D}|ShopQuanAo\\ShopQuanAo.csproj|c:\\david\\nguyenhuutung_2020600785\\shopquanao\\areas\\admin\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{767EAD24-7BA6-4F95-823E-1000A85D1E2D}|ShopQuanAo\\ShopQuanAo.csproj|solutionrelative:shopquanao\\areas\\admin\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{767EAD24-7BA6-4F95-823E-1000A85D1E2D}|ShopQuanAo\\ShopQuanAo.csproj|c:\\david\\nguyenhuutung_2020600785\\shopquanao\\areas\\admin\\views\\dashboard\\_statistical.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{767EAD24-7BA6-4F95-823E-1000A85D1E2D}|ShopQuanAo\\ShopQuanAo.csproj|solutionrelative:shopquanao\\areas\\admin\\views\\dashboard\\_statistical.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{767EAD24-7BA6-4F95-823E-1000A85D1E2D}|ShopQuanAo\\ShopQuanAo.csproj|c:\\david\\nguyenhuutung_2020600785\\shopquanao\\controllers\\checkoutcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{767EAD24-7BA6-4F95-823E-1000A85D1E2D}|ShopQuanAo\\ShopQuanAo.csproj|solutionrelative:shopquanao\\controllers\\checkoutcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DashboardController.cs",
+              "DocumentMoniker": "C:\\David\\NguyenHuuTung_2020600785\\ShopQuanAo\\Areas\\Admin\\Controllers\\DashboardController.cs",
+              "RelativeDocumentMoniker": "ShopQuanAo\\Areas\\Admin\\Controllers\\DashboardController.cs",
+              "ToolTip": "C:\\David\\NguyenHuuTung_2020600785\\ShopQuanAo\\Areas\\Admin\\Controllers\\DashboardController.cs",
+              "RelativeToolTip": "ShopQuanAo\\Areas\\Admin\\Controllers\\DashboardController.cs",
+              "ViewState": "AQIAAB8AAAAAAAAAAAAQwDIAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T14:05:46.491Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "_Statistical.cshtml",
+              "DocumentMoniker": "C:\\David\\NguyenHuuTung_2020600785\\ShopQuanAo\\Areas\\Admin\\Views\\Dashboard\\_Statistical.cshtml",
+              "RelativeDocumentMoniker": "ShopQuanAo\\Areas\\Admin\\Views\\Dashboard\\_Statistical.cshtml",
+              "ToolTip": "C:\\David\\NguyenHuuTung_2020600785\\ShopQuanAo\\Areas\\Admin\\Views\\Dashboard\\_Statistical.cshtml",
+              "RelativeToolTip": "ShopQuanAo\\Areas\\Admin\\Views\\Dashboard\\_Statistical.cshtml",
+              "ViewState": "AQIAAEoAAAAAAAAAAAAewHAAAABaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-03T14:05:10.896Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CheckoutController.cs",
+              "DocumentMoniker": "C:\\David\\NguyenHuuTung_2020600785\\ShopQuanAo\\Controllers\\CheckoutController.cs",
+              "RelativeDocumentMoniker": "ShopQuanAo\\Controllers\\CheckoutController.cs",
+              "ToolTip": "C:\\David\\NguyenHuuTung_2020600785\\ShopQuanAo\\Controllers\\CheckoutController.cs",
+              "RelativeToolTip": "ShopQuanAo\\Controllers\\CheckoutController.cs",
+              "ViewState": "AQIAABwAAAAAAAAAAAAQwCsAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T14:01:05.251Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

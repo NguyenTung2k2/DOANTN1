@@ -1,0 +1,26 @@
+﻿@model ShopQuanAo.Models.Mcategory
+@{
+    ViewBag.Title = "loai san pham";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+@Html.Action("Mainmenu", "module")
+<section class="container-fluid pt-3">
+    <div class="container ">
+        <div class="row">
+            <div class="col-md-3">
+                @Html.Action("Listcategory", "module")
+            </div>
+            <div class="col-md-9">
+                <div class="card ">
+                    <h3 class="card-header text-xanhduong bg-white">@Model.name</h3>
+                    <div class="card-body">
+                        <div class="row">
+                            @Html.Action("subcategory", "Sanpham", new { catid = @Model.ID,slug = Model.slug })
+                        </div>
+                                </div>
+                            </div>
+
+                        </div>
+        </div>`
+    </div>
+</section>

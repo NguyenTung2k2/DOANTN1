@@ -1,0 +1,113 @@
+﻿@model ShopQuanAo.Models.Mmenu
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@{
+    List<SelectListItem> status = new List<SelectListItem>();
+
+    SelectListItem statusitem1 = new SelectListItem() { Value = "1", Text = "Ẩn" };
+    SelectListItem statusitem2 = new SelectListItem() { Value = "2", Text = "Hiện" };
+    status.Add(statusitem1);
+    status.Add(statusitem2);
+
+    List<SelectListItem> listPosition = new List<SelectListItem>();
+    SelectListItem listPositem;
+
+    listPositem = new SelectListItem() { Value = "mainmenu", Text = "mainmenu" };
+    listPosition.Add(listPositem);
+
+    List<SelectListItem> listOrder = new List<SelectListItem>();
+    SelectListItem listOrderitem;
+    foreach (var item in ViewBag.listMenu)
+    {
+        listOrderitem = new SelectListItem() { Value = item.orders + "", Text = "Sau - " +  item.name };
+        listOrder.Add(listOrderitem);
+    }
+}
+@Html.Partial("~/Areas/Admin/Views/Shared/_topMenu.cshtml")
+@Html.Partial("~/Areas/Admin/Views/Shared/_leftMenu.cshtml")
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row m-0 bg-light">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Cập nhật Menu</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Cập nhật Menu</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+
+    
+    <section class="pt-2 container card">
+        @Html.Partial("_MessgeAlert")
+        <div class=" bg-white p-4 ">
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.ID)
+                @Html.HiddenFor(model => model.created_at)
+                @Html.HiddenFor(model => model.created_by)
+                @Html.HiddenFor(model => model.type)
+                @Html.HiddenFor(model => model.tableid)
+                @Html.HiddenFor(model => model.parentid)
+                <div class=" row ">
+                    <div class="col-md-4">  </div>
+                    <div class="col-md-4"> <h3 class="text-center font-weight-bold text-success "> CẬP NHẬT MENU</h3> </div>
+                    <div class="col-md-4 ">
+                        <div class="float-right">
+                            <button class="btn btn-sm bg-success text-white"><i class="far fa-save"></i> Lưu</button>
+                            <a href="~/admin/menu" class="btn btn-sm bg-danger text-white"><i class="far fa-window-close"></i> Hủy</a>
+                        </div>
+                    </div>
+                </div>
+                <div class=" row ">
+                    <div class="col-md-8">
+                        <div>
+                            <label for="psw"><span class=" ">Tên Menu</span></label>
+                            @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                        </div>
+                        <div>
+                            <label for="psw"><span class=" ">Link</span></label>
+                            @Html.EditorFor(model => model.link, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.link, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div>
+                            <label for="psw"><span class=" ">Loại menu</span></label>
+                            @Html.DropDownListFor(model => model.position, listPosition, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.position, "", new { @class = "text-danger" })
+                        </div>
+                        <div>
+                            <label for="psw"><span class=" ">Vị trí Menu</span></label>
+                            @Html.DropDownListFor(model => model.orders, listOrder, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.orders, "", new { @class = "text-danger" })
+                        </div>
+                        <div>
+                            <label for="psw"><span class=" ">Trang Thái</span></label>
+                            @Html.DropDownListFor(model => model.status, status, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+
+    <script>
+        $("#menu").addClass("active");
+    </script>

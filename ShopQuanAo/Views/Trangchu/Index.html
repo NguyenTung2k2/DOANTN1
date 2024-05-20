@@ -1,0 +1,64 @@
+@model IEnumerable<ShopQuanAo.Models.Mcategory>
+@{
+    ViewBag.Title = "Trang Chu";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+@Html.Partial("_MessgeAlert")
+@Html.Action("Mainmenu", "module")
+<!-- list category & sliser-->
+<section class="container-fluid">
+    <div>
+        <div class="container pt-3">
+            <div class="row">
+                <!-- listcategory-->
+                <div class="col-md-4 w-100">
+                    @Html.Action("Listcategory", "module")
+                </div>
+                <div class="col-md-8">
+                    @Html.Action("slider", "module")
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.Partial("~/Views/Shared/_ServiceCustomer.cshtml")
+</section>
+
+@foreach (var item in Model)
+{
+    <section class="container-fluid pt-3">
+        <div class="container ">
+            <div class="card">
+                <h3 class="card-header text-xanhduong bg-white">@item.name</h3>
+                <div class="card-body">
+                    <div class="row">
+                        @Html.Action("productHome", "Trangchu", new { id = item.ID })
+                    </div>
+                </div>
+                <ul class="pagination pagination-sm justify-content-center">
+                    <li class="page-item"><a class="page-link text-secondary" href="#">Previous</a></li>
+                    <li class="page-item"><a class="page-link text-secondary" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link text-secondary" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link text-secondary" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link text-secondary" href="#">Next</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+}
+<div id="fb-root"></div>
+<script>
+         $(document).ready(function (event) {
+            $("#form-register").submit(function (event) {
+                $("span-alert").text('');
+                var pass1 = $("#psw").val();
+                var pass2 = $("#repsw").val();
+                if (pass1 != pass2) {
+                    $("span-alert").text('mat khau khong khop');
+                    return false;
+                }
+                else {
+                    return true;
+                }
+
+            });
+</script>   

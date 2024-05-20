@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\ShopQuanAo",
+    "\\ShopQuanAo\\Areas",
+    "\\ShopQuanAo\\Areas\\Admin",
+    "\\ShopQuanAo\\Areas\\Admin\\Controllers",
+    "\\ShopQuanAo\\Views",
+    "\\ShopQuanAo\\Views\\Baiviet"
+  ],
+  "SelectedNode": "\\ShopQuanAo\\Views\\Baiviet\\Index.cshtml",
+  "PreviewInSolutionExplorer": false
+}

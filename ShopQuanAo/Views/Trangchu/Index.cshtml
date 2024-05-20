@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ShopQuanAo.Models.Mcategory>
+
+@{
+    ViewBag.Title = "Trang Chu";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+@Html.Action("Mainmenu", "module")
+<!-- list category & sliser-->
+<section class="container-fluid">
+    <div>
+        <div class="container pt-3">
+            <div class="row">
+                <!-- listcategory-->
+                <div class="col-md-4 w-100">
+                    @Html.Action("Listcategory", "module")
+                </div>
+                <div class="col-md-8">
+                    @Html.Action("slider", "module")
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.Partial("~/Views/Shared/_ServiceCustomer.cshtml")
+</section>
+
+<section class="container-fluid pt-3">
+    <div class="container ">
+        <div class="card">
+            <h3 class="card-header text-xanhduong bg-white">Sản Phẩm Khuyến mãi</h3>
+            <div class="card-body">
+                <div class="row">
+                    @Html.Action("productsale", "Trangchu")
+                </div>
+            </div>
+</section>
+
+@foreach (var item in Model)
+{
+    <section class="container-fluid pt-3">
+        <div class="container ">
+            <div class="card">
+                <h3 class="card-header text-xanhduong bg-white">@item.name</h3>
+                <div class="card-body">
+                    <div class="row">
+                        @Html.Action("productHome", "Trangchu", new { id = item.ID })
+                    </div>
+                </div>
+    </section>
+}
+<div id="fb-root"></div>

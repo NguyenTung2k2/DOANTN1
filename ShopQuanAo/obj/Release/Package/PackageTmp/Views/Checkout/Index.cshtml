@@ -1,0 +1,207 @@
+﻿@model List<ShopQuanAo.Models.Cart_item>
+@{
+    ViewBag.Title = "thanhtoan";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+@Html.Action("Mainmenu", "module")
+<section>
+    <div class="container-fluid pt-5">
+
+        <div class="container">
+            <span class="text-danger"> @ViewBag.error</span>
+            <div class="row">
+
+                <div class="col-md-8">
+                    <div class="card ">
+
+                        <h6 class="bg-cam font-weight-bold text-center border-bottom py-2 text-white">Hình thức thanh toán</h6>
+                        <div class="pl-2  pb-2">
+
+
+                            <ul class="list-unstyled">
+                                <p>
+                                    <input type="radio" id="1" name="radio-group" checked>
+                                    <label for="1" class="text-success"><i class="text-success fas fa-money-check-alt"></i> Thanh Toán khi nhận hàng</label>
+                                </p>
+                                <p>
+                                    <input type="radio" id="2" name="radio-group" disabled>
+                                    <label for="2" class="text-secondary"><i class="fas fa-money-bill-alt"></i> Chuyển khoảng ngân hàng(ACB, TPBank,Vietcombank...)</label>
+                                </p>
+                                <p>
+                                    <input type="radio" id="3" name="radio-group" disabled>
+                                    <label for="3" class="text-secondary"><i class="fab fa-cc-paypal"></i> Ví điện tử (Momo, payal, viettel Pay)</label>
+                                </p>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <form action="" name="form_lh" method="post">
+                        <div class=" pt-2">
+                            <div class="card ">
+
+                                <h6 class="bg-cam font-weight-bold text-center border-bottom py-2 text-white">Địa chỉ nhận hàng</h6>
+                                <div class="pl-5 py-3">
+                                    <div class="pl-3 pr-5">
+
+
+                                        <label for="psw"><b class="text-secondary">Tên Bạn</b></label>
+                                        <input type="text" name="deliveryname" required>
+
+                                        <label for="psw"><b class="text-secondary">SĐT</b></label>
+                                        <input type="tel" name="deliveryphone" required>
+
+                                        <label for="psw"><b class="text-secondary">Email</b></label>
+                                        <input type="email" name="deliveryemail" required>
+
+                                        <label for="psw"><b class="text-secondary">Địa chỉ nhận hàng</b></label>
+                                        <input type="text" name="deliveryaddress" required>
+
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <button type="submit" class="btn-button float-right w-25 bg-cam ">  Hoàn tất</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="card ">
+
+                        <h6 class="bg-cam font-weight-bold text-center border-bottom py-2 text-white">Sản phẩm</h6>
+                        @{ float sum = 0;
+                        
+                           
+                            }
+                        @foreach (var iten in Model)
+                        {
+                            int sale = (int)iten.product.pricesale;
+                            float price = (int)iten.product.price - (int)iten.product.price / 100 * (int)sale;
+                            float price1 = ((int)iten.product.price - (int)iten.product.price / 100 * (int)sale) * (iten.quantity);
+                            if (sale > 0)
+                            {
+                                sum += ((int)iten.product.price - (int)iten.product.price / 100 * (int)sale) * ((int)iten.quantity);
+                            }
+                            else {
+                                sum += (int)iten.product.price * (int)iten.quantity;
+                            }
+                            <div class="pl-2  pb-2">
+                                <ul class="pagination border-bottom pb-2">
+                                    @if (sale > 0)
+                                    {
+                                        <li class="position-relative">
+                                            <div class="arrow-up">
+                                                <span class=" text-white pl-3">-@sale%</span>
+                                            </div><img class="img-thumbnail" width="125px;" src="~/public/images/@iten.product.img" alt="">
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                    <li><img class="img-thumbnail" width="125px;" src="~/public/images/@iten.product.img" alt=""></li>
+                                    }
+                                    <ul class="list-unstyled">
+                                        <li class="pl-2"><p class="font-weight-bold ">@iten.product.name</p></li>
+                                        @if (sale > 0)
+                                        {
+                                            <li class="pl-2"><p class="font-weight-bold font-12 "><span class="text-danger"><strike> @iten.product.price.ToString("N0") VND</strike>  </span> <br /><span> @iten.product.price VND</span> x @iten.quantity = <span>@price1.ToString("N0") VND</span> </p></li>
+                                        }
+                                        else
+                                        {
+                                            float sum1 = (int)iten.product.price * iten.quantity;
+                                            <li class="pl-2"><p class="font-weight-bold font-12 "><span>@iten.product.price.ToString("N0") VND</span> x = @sum1.ToString("N0") VND  <span></span> </p></li>
+                                        }
+
+
+                                    </ul>
+
+                                </ul>
+
+                            </div>
+                        }
+                        <h5 class="pl-2"> Tổng thanh toán: <span class="text-cam">@sum.ToString("N0") VND</span> </h5>
+                        <div class="row ">
+                            <div class="col-md-6">
+                                <div class="pt-4 pl-3 pb-1">
+                                    <a href="~/gio-hang" class="card-link text-body1 text-cam"><i class="fas fa-caret-left"></i>  Thay đổi giỏ hàng</a>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style type="text/css">
+    [type="radio"]:checked,
+    [type="radio"]:not(:checked) {
+        position: absolute;
+        left: -9999px;
+    }
+
+        [type="radio"]:checked + label,
+        [type="radio"]:not(:checked) + label {
+            position: relative;
+            padding-left: 28px;
+            cursor: pointer;
+            line-height: 20px;
+            display: inline-block;
+            color: #666;
+        }
+
+            [type="radio"]:checked + label:before,
+            [type="radio"]:not(:checked) + label:before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 18px;
+                height: 18px;
+                border: 1px solid #ddd;
+                border-radius: 100%;
+                background: #fff;
+            }
+
+            [type="radio"]:checked + label:after,
+            [type="radio"]:not(:checked) + label:after {
+                content: '';
+                width: 12px;
+                height: 12px;
+                background: #FA7237;
+                position: absolute;
+                top: 4px;
+                left: 4px;
+                border-radius: 100%;
+                -webkit-transition: all 0.2s ease;
+                transition: all 0.2s ease;
+            }
+
+            [type="radio"]:not(:checked) + label:after {
+                opacity: 0;
+                -webkit-transform: scale(0);
+                transform: scale(0);
+            }
+
+            [type="radio"]:checked + label:after {
+                opacity: 1;
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+
+    span.psw {
+        float: right;
+        padding-top: 16px;
+    }
+</style>

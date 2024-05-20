@@ -1,0 +1,9 @@
+﻿@model IEnumerable<ShopQuanAo.Models.Mtopic>
+<ul class="list-group bg-white">
+    <li class="list-group-item "><h5 class="font-weight-bold text-xanh "><i class="far fa-folder-open"></i> LOẠI BÀI VIẾT</h5></li>
+    @foreach (var item in Model)
+    {
+        <li class="list-group-item"><a class="card-link text-body1" href="~/bai-viet/@item.slug">@item.name</a></li>
+    }
+
+</ul>

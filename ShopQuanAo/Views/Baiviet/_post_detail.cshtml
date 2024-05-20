@@ -1,0 +1,20 @@
+﻿@model ShopQuanAo.Models.Mpost
+@{
+    ViewBag.Title = "San pham";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+@Html.Action("Mainmenu", "module")
+<section class="pt-3">
+    <div class="container bg-white pt-3 text-center">
+        <h2 class="font-weight-bold text-cam">@Model.title</h2>
+
+        <span class="font-13   pt-2"><i class="far fa-clock"></i> @Model.created_at</span>  <span class="text-danger font-14  font-weight-bold"> Ẩm Thực </span>
+        <p class="pt-4">@Html.Raw(Model.detail)</p>
+        <div class="pt-3"><img src="~/public/images/post/@Model.img" alt="Alternate Text" /></div>
+
+
+    </div>
+   
+
+</section>
+

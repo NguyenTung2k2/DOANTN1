@@ -1,0 +1,211 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>@ViewBag.Title</title>
+    <link href="~/public/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/public/css/style.css" rel="stylesheet" />
+    <link href="~/public/css/all.min.css" rel="stylesheet" />
+    <script src="~/public/js/jquery-3.4.1.min.js"></script>
+</head>
+<body class="boddy">
+
+    @*<div class="load">
+            <div class="loading-page-effect ">
+                <img src="~/public/images/newtons-cradle-loader.gif" />
+            </div>
+        </div>*@
+
+    <div class="ajaxload-effect">
+        <div class="loading-ajax-effect ">
+            <img src="~/public/images/unnamed.gif" />
+        </div>
+    </div>
+
+    <div class="ajaxload-effect-heart">
+        <div class="loading-ajax-effect-heart">
+            <img src="~/public/images/instagram-likes.gif" />
+        </div>
+    </div>
+
+    @Html.Action("header", "module")
+
+    <!-- /header-->
+    <section class="position-relative">
+        <div class="container ">
+            <div class="row py-2 ">
+                <div class="col-md-6"> <img style="width:60%;" src="~/public/images/logohung.png"></div>
+                <div class="col-md-6  float-right"> <img class="float-right" style="width:100%;" src="~/public/images/logohung2.png"></div>
+            </div>
+        </div>
+        @Html.Partial("_MessgeAlert")
+    </section>
+
+    <div class="clearfix">  </div>
+    @RenderBody()
+    <div class="clearfix">  </div>
+
+    </section>
+    <section class="pt-4">
+        <div class="container-fluid bg-light pt-4 ">
+            <div class="container">
+                <div class="row ">
+                    <div class="col-md-2">
+                        <p class="font-dam text-xanhduong"> Hỗ Trợ Khách Hàng</p>
+                        <ul class="list-unstyled text-nau">
+                            <li>Thẻ Ưu Đãi</li>
+                            <li>Phiếu Bảo Hành</li>
+                            <li>Trung Tâm Bảo Hành</li>
+                            <li>Thanh Tán Và Mua Hàng</li>
+                            <li>Thanh Toán Và Vận Chuyển</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <p class="font-dam text-xanhduong">Chính sách Mua hàng và Bảo hành</p>
+                        <ul class="list-unstyled text-nau">
+                            <li>Chính sách Mua hàng và Bảo hành</li>
+                            <li>Chính sách Bảo mật Thông tin</li>
+                            <li>Chính sách Vận chuyển, Giao nhận</li>
+                            <li>Thanh Tán Và Mua Hàng</li>
+                            <li>Thanh Toán Và Vận Chuyển</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <p class="font-dam text-xanhduong">Liên Hệ SunFlower.Garasale</p>
+                        <ul class="list-unstyled text-nau">
+                            <li><i class="fab fa-facebook-square text-info"></i>   Nguyen Tung</li>
+                            <li><i class="fab fa-google text-danger"></i>  Tung Nguyen</li>
+                            <li><i class="fab fa-instagram text-primary"></i>   TungDay</li>
+                            <li><i class="fab fa-youtube text-danger"></i>  Nguyen Huu Tung</li>
+                            <li> <i class="fab fa-twitter-square text-info"></i> Thanh Toán Và Vận Chuyển</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="font-dam text-xanhduong">Đăng Kí Nhận Tin</p>
+                        <div class="btn-group w-100">
+                            <input type="input" class="form-control  " name="subrite">
+                            <button class="form-control btn btn-danger w-25">Submit</button>
+                        </div>
+                        <p class="font-dam text-xanhduong ">Đã Thông Báo Bộ Công Thương</p>
+                        <img src="https://canifa.com/skin/frontend/canifa/canifa-2019/~/public/images/icon/img-dang-ky.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-center">
+            <span class=" text-center">© Copyright by TongLink </span>
+        </div>
+
+    </section>
+    <div class="zalo-chat-widget" data-oaid="2618435205887793057" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="350" data-height="420"></div>
+    <script src="https://sp.zalo.me/plugins/sdk.js"></script>
+    <!-- modal login-->
+    <div class="container">
+        <!-- Button to Open the Modal -->
+        <div class="modal fade" id="myModal_login">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Đăng Nhập</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <form method="post" name="login" action="/login">
+                        <div class="container">
+                            <label for="uname"><b>Tên Đăng Nhập</b></label>
+                            <input type="text" placeholder="Tên Đăng Nhập" name="uname" id="uname" required>
+
+                            <label for="psw"><b>Mật Khẩu</b></label>
+                            <input type="password" placeholder="Mật Khẩu" name="psw" id="psw" required>
+
+                            <button type="submit" id="submit-login" class="btn-button w-100 bg-danger">Login</button>
+                        </div>
+                        <div class="container" style="background-color:#f1f1f1">
+                            <button type="button" class="btn-button bg-success" data-dismiss="modal">Cancel</button>
+                            <span class="psw"> <a href="/quen-mat-khau">Quên mật khẩu?</a></span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- modal login-->
+    <!-- modal signup-->
+    <div class="container">
+        <!-- Button to Open the Modal -->
+        <div class="modal fade" id="myModal_signup">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Đăng Kí</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <form method="post" name="register" id="form-register" action="/register  ">
+                        <div class="container">
+                            <label><b>Tên Đăng Nhập</b></label>
+                            <input type="text" placeholder="Tên Đăng Nhập" name="uname" required>
+
+                            <label><b>Tên Đầy Đủ Của Bạn</b></label>
+                            <input type="text" placeholder="Tên Đầy Đủ" name="fname" required>
+
+                            <label><b>Mật Khẩu</b></label>
+                            <input type="password" placeholder="Mật Khẩu" name="psw" id="psww" required>
+
+                            <label><b>Nhập lại mật Khẩu</b></label>
+                            <input type="password" placeholder="Nhập lại mật Khẩu" name="repsw" id="repsww" required>
+                            <span class="text-danger" id="span-alert"></span>
+
+                            <label><b>Email</b></label>
+                            <input type="email" placeholder="Email" name="email" required>
+
+                            <label><b>Số Điện Thoại</b></label>
+                            <input type="tel" placeholder="Số Điện thoại" name="phone" required>
+
+                            <button type="submit" id="abc" class="btn-button w-100 bg-danger">register</button>
+                        </div>
+                        <div class="container" style="background-color:#f1f1f1">
+                            <button type="button" class="btn-button bg-success" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- modal signup-->
+    <script>
+        //animation load page
+        $(window).on('load', function (event) {
+            $('.loading-page-effect').fadeOut('fast');
+        })
+        //Custom Alert
+        $("#messgeAlert").fadeIn(900);
+        $(document).ready(function (event) {
+            $("#form-register").submit(function (event) {
+                var pass1 = $("#psww").val();
+                var pass2 = $("#repsww").val();
+                if (pass2 != pass1) {
+                    alert("Mật khẩu không khớp");
+                    return false;
+                }
+            });
+        });
+    </script>
+    <script src="~/public/js/main.js"></script>
+    <script src="~/public/js/popper.min.js"></script>
+    <script src="~/public/js/bootstrap.min.js"></script>
+    <style>
+        .arrow-up {
+            position: absolute;
+            width: 100px;
+            height: 0;
+            width: 65px;
+            height: 25px;
+            background: red;
+        }
+    </style>
+</body>
+
+
+</html>

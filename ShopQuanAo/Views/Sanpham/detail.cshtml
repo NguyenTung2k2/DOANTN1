@@ -1,0 +1,101 @@
+﻿@model ShopQuanAo.Models.Mproduct
+@{
+    ViewBag.Title = "Chi tiet san pham";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+@Html.Action("Mainmenu", "module")
+@{
+    string detail = Model.detail;
+    int number = Model.number;
+    int sale = (int)Model.pricesale;
+    float price = (int)Model.price - (int)Model.price / 100 * (int)sale;
+
+    }
+<section>
+    <div class="container-fluid pt-5">
+        <div class="container card bg-white">
+
+            <div class="row  ">
+                <div class="col-md-6">
+                    @if (sale > 0)
+                    {
+                    <div class="py-4 pl-4 position-relative">
+                        <div class="arrow-up">
+                            <span class=" text-white pl-3">-@sale%</span>
+                        </div>
+                        <img class="img-fluid" src="~/public/images/@Model.img" alt="">
+                    </div>
+                    }
+                    else
+                    {
+                        <div class="py-4 pl-4">
+                            <img class="img-fluid" src="~/public/images/@Model.img" alt="">
+                        </div>
+                    }
+                </div>
+                <div class="col-md-6 pt-4 ">
+                    <p class=" badge badge-danger"> New</p>
+                    <ul class="list-unstyled ">
+                        <li><p class="font-weight-bold font-16">@Model.name</p></li>
+                        <li><p class="font-14"><span class="font-weight-bold">Mã Sản Phẩm:</span>@Model.ID</p></li>
+                        <li><p class="font-weight-bold"> Đánh Giá:   <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="far fa-star text-secondary"></i></p></li>
+                        @if (sale > 0)
+                        {
+                            <li> <h4 class="font-weight-bold text-dark"><strike> Giá: @Model.price.ToString("N0") VND </strike><span class="text-warning"></span></h4>
+                                 <h4 class="font-weight-bold text-danger">Giá: @price.ToString("N0") VND <span class="text-warning"></span></h4>
+                        </li>
+                        }
+                        else
+                        {
+                            <li> <h4 class="font-weight-bold text-danger">Giá: @Model.price.ToString("N0") VND <span class="text-warning">VND</span></h4></li>
+                        }
+
+                        <li> <span class="font-weight-bold">Màu:</span> <i class="fas fa-check bg-danger text-white"> </i> <i class="fas fa-check bg-warning text-white"></i> <i class="fas fa-check bg-success text-white"></i> <i class="fas fa-check bg-secondary text-white"></i></li>
+                        <li class="pt-2"><span class="font-weight-bold"> Vận Chuyển:   <i class="fas fa-shipping-fast"></i></span><span class="form-control-sm text-secondary">Miễn phí vận chuyển(với đơn hàng trên 500.000đ)</span></li>
+                        <li class="pt-3 ">
+                            <span class="font-weight-bold">
+                                Tình trạng: @if (number > 0)
+                                {<span class="badge badge-success"> Còn hàng</span> }
+                                else
+                                { <span class="badge badge-danger"> Hết Hàng</span>}
+                            </span>
+                            <br><div class="pt-4"><span class=" font-weight-bold">Chi Tiết Sản Phẩm: </span></div>
+                            <p class="text-secondary">@Html.Raw(detail)</p>
+                        </li>
+                        <li>
+                            <span class="text-success  font-weight-bold"> Kho: @{int number1 = Model.number - Model.sold; } @number1 sản phẩm</span><br>
+                            <span class="font-weight-bold"> Chọn Số Lượng: </span><span>
+                                <select w-25" id="sel1" onmousedown="if(this.options.length>8){this.size=8;}" onchange='this.size=0;' onblur="this.size=0;">
+                                    @for (int i = 1; i <= Model.number; i++)
+                                    {
+                                        <option value="@i">@i</option>
+                                    }
+                                </select>
+                            </span>
+                        </li>
+                        <li>
+                            <button onclick="addcart(@Model.ID)" class=" btn-button-cart bg-warning py-2"><i class="fas fa-cart-plus"></i> Thêm Vào Giỏ Hàng</button>
+                            <button onclick="addfavorite(@Model.ID)" class="btn-button-cart py-2 bg-danger"><i class="far fa-heart"></i> Yêu Thích</button></a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+</section>
+
+<section class="container-fluid pt-3">
+    <div class="container ">
+        <div class="row">
+            <div class="col-md-5 pt-5 borderr">
+                <h4 class="font-weight-bold text-xanhduong">Sản Phẩm Liên Quan Cùng Loại</h4>
+            </div><div class="col-md-7 pt-5 border-bottom ">
+            </div>
+            @Html.Action("cungloai", "Sanpham", new { catid = @Model.catid })
+        </div>
+    </div>
+
+</section>

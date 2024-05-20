@@ -1,0 +1,135 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@Html.Partial("~/Areas/Admin/Views/Shared/_topMenu.cshtml")
+@Html.Partial("~/Areas/Admin/Views/Shared/_leftMenu.cshtml")
+@{
+
+    var user = ViewBag.User;
+}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2 bg-light">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Số Liệu Thống Kê</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6 ">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Số Liệu thống kê</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title font-weight-bold">Thống kê sản phẩm</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 10px">#</th>
+                                        <th>Thời gian</th>
+
+                                        <th style="width: 100px">Đã Bán</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1.</td>
+                                        <td>Hôm nay</td>
+
+                                        <td><span class="badge bg-danger">33 Sản phẩm</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2.</td>
+                                        <td>Tuần Này</td>
+
+                                        <td><span class="badge bg-warning">70 Sản phẩm</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3.</td>
+                                        <td>Tháng Này</td>
+
+                                        <td><span class="badge bg-primary">30 Sản phẩm</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4.</td>
+                                        <td>Trong năm 2020</td>
+
+                                        <td><span class="badge bg-success">90 Sản phẩm</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title font-weight-bold">Thống kê Đơn hàng</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 10px">#</th>
+                                        <th>Thời gian</th>
+
+                                        <th style="width: 100px">Đã Bán</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1.</td>
+                                        <td>Hôm nay</td>
+
+                                        <td><span class="badge bg-danger">@ViewBag.OrderToday Đơn</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2.</td>
+                                        <td>Tuần Này</td>
+
+                                        <td><span class="badge bg-warning">@ViewBag.OrderWeek Đơn</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3.</td>
+                                        <td>30 ngày gần nhất</td>
+
+                                        <td><span class="badge bg-primary">@ViewBag.d30day Đơn</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3.</td>
+                                        <td>Tháng Này</td>
+
+                                        <td><span class="badge bg-primary">@ViewBag.Ordermonth Đơn</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4.</td>
+                                        <td>Trong năm 2020</td>
+
+                                        <td><span class="badge bg-success">@ViewBag.OrderYear Đơn</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+    </section>

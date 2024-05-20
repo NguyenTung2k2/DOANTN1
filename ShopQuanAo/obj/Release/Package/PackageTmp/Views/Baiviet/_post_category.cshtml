@@ -1,0 +1,22 @@
+﻿@model ShopQuanAo.Models.Mtopic
+@{
+    ViewBag.Title = "San pham";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+@Html.Action("Mainmenu", "module")
+
+<!-- /navbar-->
+<section class="pt-3">
+    <div class="container  pt">
+        <div class="row">
+            <div class="col-md-9 bg-white">
+                <h3 class="font-weight-bold text-cam pt-3"><i class="far fa-newspaper"></i> @Model.name</h3>
+               @Html.Action("post_category", "Baiviet", new { catid = Model.ID, slug = Model.slug})
+            </div>
+            <div class="col-md-3">
+                @Html.Action("topiccategory", "Baiviet")
+            </div>
+        </div>
+
+    </div>
+</section>

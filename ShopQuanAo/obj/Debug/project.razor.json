@@ -1,0 +1,19 @@
+{
+  "FilePath": "c:\\Users\\hungdeptrai\\source\\repos\\NguyenVanHung_2117110236\\ShopQuanAo\\ShopQuanAo.csproj",
+  "Configuration": {
+    "ConfigurationName": "UnsupportedRazor",
+    "LanguageVersion": "1.0",
+    "Extensions": [
+      {
+        "ExtensionName": "UnsupportedRazorExtension"
+      }
+    ]
+  },
+  "ProjectWorkspaceState": {
+    "TagHelpers": [],
+    "CSharpLanguageVersion": 702
+  },
+  "RootNamespace": null,
+  "Documents": [],
+  "SerializationFormat": "0.2"
+}

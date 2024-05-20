@@ -1,0 +1,105 @@
+﻿@model List<ShopQuanAo.Models.Cart_item>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+@Html.Action("Mainmenu", "module")
+<section>
+    <div class="container-fluid pt-5">
+        <div class="container">
+            <div class="card ">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="font-weight-bold text-xanhduong"> Giỏ Hàng</h5>
+                        </div>
+ 
+                    </div>
+                </div>
+                <table class="table table-inverse table-hover table-bordered">
+                    <thead>
+                        <tr class="text-body1">
+                            <th width="12%">Hình Ảnh</th>
+
+                            <th class="text-center">Tên Sản Pẩm</th>
+                            <th class="text-center">Giá Tiền</th>
+                            <th class="text-center" style="width:160px;">Số Lượng</th>
+                            <th class="text-center" style="width:160px;">Thành Tiền</th>
+                            <th class="text-center" style="width:20%;">Option</th>
+                            <th style="width:20px;" class="text-center">ID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ float sum = 0;
+                        }
+                        @foreach (var iten in Model)
+                        {
+                            int sale = (int)iten.product.pricesale;
+                            float price = ((int)iten.product.price - (int)iten.product.price / 100 * (int)sale);
+                            float price1 = ((int)iten.product.price - (int)iten.product.price / 100 * (int)sale) * (iten.quantity);
+                            float priveNsale = (int)iten.product.price * iten.quantity;
+                            if (sale > 0)
+                            {
+                                sum += ((int)iten.product.price - (int)iten.product.price / 100 * (int)sale) * ((int)iten.quantity);
+                            }
+                            else
+                            {
+                                sum += (int)iten.product.price * (int)iten.quantity;
+                            }
+
+                            <form action="@Url.Action("updateitem")" method="get">
+                                <tr class="text-body1">
+                                    <th><img width="50%" src="~/public/images/@iten.product.img" alt=""></th>
+                                    <th>@iten.product.name</th>
+                                    @if (sale > 0)
+                                    {
+                                        <th > <span class="text-danger"><Strike> @iten.product.price.ToString("N0") VND</Strike></span><br/>
+                                        @price.ToString("N0") VND</th>
+                                    }
+                                    else
+                                    {
+                                        <th>@iten.product.price.ToString("N0") VND</th>
+                                    }
+
+                                    <th>
+
+                                        <input type="hidden" name="P_SanPhamID" value="@iten.product.ID" />
+                                        <input class="w-50" type="number" min="1" step="1" name="P_quantity" value="@iten.quantity" />
+
+
+                                    </th>
+                                    <th>@price1.ToString("N0") VND</th>
+                                    <th><button type="submit" class="btn btn-sm btn-warning text-white"><i class="fas fa-retweet"></i></button> <a href="~/xoa-gio-hang?productID=@iten.product.ID" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>  </th>
+                                    <th>@iten.product.ID</th>
+
+                                </tr>
+                            </form>
+                        }
+
+
+
+                    </tbody>
+
+                </table>
+                <div class="row ">
+                    <div class="col-md-6">
+                        <div class="pt-4 pl-3">
+                            <a href="~/sanpham/" class="card-link text-body1"><i class="fas fa-caret-left"></i>  Tiếp Tục Mua Hàng</a>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6 text-danger">
+                        <div class="float-right p-3">
+                            <span class="font-weight-bold ">Tổng Tiền: @sum.ToString("N0") VND</span><br>
+                            <div class="pt-2">
+                                <a class="btn btn-sm btn-danger float-right " href="~/thanh-toan"> Thanh Toán</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

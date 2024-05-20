@@ -1,0 +1,159 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+@Html.Action("Mainmenu", "module")
+
+<!-- section -->
+<div class="section pt-4">
+    <!-- container -->
+    <div class="container bg-white">
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="order-summary clearfix">
+                    <div class="section-title">
+                        <p class="text-success  ">Đặt hàng thành công!. </p>
+                        <h3 class="title text-cam">Thông tin đơn hàng</h3>
+
+                    </div>
+
+                    <table class="shopping-cart-table table">
+
+                        <tbody>
+                            <tr>
+                                <td class=""><h5>Tên khách hàng: </h5></td>
+                                <td>@ViewBag.name</td>
+                            </tr>
+                            <tr>
+                                <td class=""><h5>mã đơn hàng</h5></td>
+                                <td>@ViewBag.code</td>
+                            </tr>
+                            <tr>
+                                <td class=""><h5>Địa chỉ</h5></td>
+                                <td>@ViewBag.address</td>
+                            </tr>
+                            <tr>
+                                <td class=""><h5>Email</h5></td>
+                                <td>@ViewBag.email</td>
+                            </tr>
+                            <tr>
+                                <td class=""><h5>Số điện thoại</h5></td>
+                                <td>@ViewBag.phone</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+        <!-- /row -->
+        <!-- /container -->
+
+        <div class="order-summary clearfix">
+            <div class="section-title">
+                <h3 class="title text-cam">Thông Tin Đơn Hàng</h3>
+            </div>
+            <table class="shopping-cart-table table">
+                <thead>
+                    <tr>
+                        <th>Mã sản phẩm</th>
+                        <th>Tên sản phẩm</th>
+                        <th class="text-center">Giá sản phẩm</th>
+                        <th class="text-center">Số lượng</th>
+                        <th class="text-center">Tổng</th>
+                        <th class="text-center">Hình ảnh</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ float sum = 0;
+                    }
+                    @foreach (var iten in ViewBag.cart)
+                    {
+                        int sale = (int)iten.product.pricesale;
+                        float price = (int)iten.product.price - (int)iten.product.price / 100 * (int)sale;
+                        float price1 = ((int)iten.product.price - (int)iten.product.price / 100 * (int)sale) * (iten.quantity);
+                        if (sale > 0)
+                        {
+                            sum += ((int)iten.product.price - (int)iten.product.price / 100 * (int)sale) * ((int)iten.quantity);
+                        }
+                        else
+                        {
+                            sum += (int)iten.product.price * (int)iten.quantity;
+                        }
+                    <tr>
+                        <td>@iten.product.ID</td>
+                        <td class="details">@iten.product.name</td>
+
+                        @if (sale > 0)
+                        {
+                            <th>
+                                <span class="text-danger"><Strike> @iten.product.price.ToString("N0") VND</Strike></span><br />
+                                @price.ToString("N0") VND
+                            </th>
+                        }
+                        else
+                        {
+                            <th>@iten.product.price.ToString("N0") VND</th>
+                        }
+
+                        <td class="price text-center">@iten.quantity</td>
+                        <td class="price text-center">@price1</td>
+                        <td class="thumb"><img src="~/public/images/@iten.product.img" alt=""></td>
+                    </tr>
+                    }
+
+                </tbody>
+
+                <tfoot class="border-0">
+                    <tr>
+
+                        <th class="empty" colspan="3"></th>
+                        <th>Tạm tính</th>
+                        <th colspan="2" class="sub-total">@sum.ToString("N0") VND</th>
+                    </tr>
+                    <tr>
+                        <th class="empty" colspan="3"></th>
+                        <th>Phí vận chuyển</th>
+                        <td colspan="2">Free Shipping</td>
+                    </tr>
+                    <tr>
+                        <th class="empty" colspan="3"></th>
+                        <th>Tổng tiền</th>
+                        <th colspan="2" class="total">@sum.ToString("N0") VND</th>
+                    </tr>
+                </tfoot>
+            </table>
+
+           
+        </div>
+    </div>
+</div>
+<style>
+    .shopping-cart-table > tbody > tr > .thumb > img {
+        width: 60px;
+    }
+    .section-title {
+        position: relative;
+        margin-bottom: 15px;
+        margin-top: 15px;
+        border-bottom: 1px solid #DADADA;
+    }
+
+        .section-title .title {
+            display: inline-block;
+            text-transform: uppercase;
+        }
+
+        .section-title:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -1.5px;
+            height: 3px;
+            width: 60px;
+            background-color: #F8694A;
+        }
+</style>

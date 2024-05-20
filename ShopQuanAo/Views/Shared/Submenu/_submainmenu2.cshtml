@@ -1,0 +1,5 @@
+﻿@model IEnumerable<ShopQuanAo.Models.Mmenu>
+@{ var mainmenuitem = ViewBag.mainmenuitem; }
+<li class="nav-item active">
+    <a class="nav-link " href="~/@mainmenuitem.link"> @mainmenuitem.name</a>
+</li>

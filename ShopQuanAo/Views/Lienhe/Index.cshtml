@@ -1,0 +1,54 @@
+﻿@model ShopQuanAo.Models.Mcontact
+
+@{
+    ViewBag.Title = "San pham";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+@Html.Action("Mainmenu", "module")
+
+<section>
+    <div class="container-fluid pt-5">
+        <div class="container bg-white">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-5 pt-5 borderr">
+                            <h4 class="font-weight-bold text-xanhduong">Bản Đồ</h4>
+                        </div><div class="col-md-7 pt-5 border-bottom "></div>
+                    </div>
+                    <iframe class="w-100 pt-5" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2434.092884680564!2d106.7205576359965!3d10.728114629053977!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f8a26b94475%3A0x42ae0c980991435a!2zQ8O0bmcgdmnDqm4sIFTDom4gUGjDuiwgUXXhuq1uIDcsIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1569749253889!5m2!1svi!2s" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-5 pt-5 borderr">
+                            <h4 class="font-weight-bold text-xanhduong">Liên Hệ</h4>
+                        </div><div class="col-md-7 pt-5 border-bottom "></div>
+                    </div>
+                    <div class="pt-5">
+                        <form action="~/Lienhe/Nhanlienket" name="form_lh" method="post">
+                            <label for="psw"><b class="text-secondary">Tên Đầy Đủ Của Bạn</b></label>
+                            <input type="text" placeholder="Tên Đầy Đủ" name="fullname" required>
+                            <label for="psw"><b class="text-secondary">email</b></label>
+                            <input type="text" placeholder="Email" name="email" required>
+                            <label for="psw"><b class="text-secondary">Số Điện Thoại</b></label>
+                            <input type="text" placeholder="Số Điên Thoại của bạn" name="phone" required>
+                            <label for="psw"><b class="text-secondary">Tiêu Đề</b></label>
+                            <input type="text" placeholder="Số Điên Thoại của bạn" name="title" required>
+                            <label for="psw"><b class="text-secondary">Nội Dung Liên Hệ</b></label>
+                            <textarea type="text" placeholder="Nội Dung Liên Hệ" name="detail"></textarea>
+                            <button type="submit" class="btn-button w-100 bg-danger">Gửi Liên Hệ</button>
+                        </form>
+                        <script>
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>

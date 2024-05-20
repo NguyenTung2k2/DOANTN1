@@ -1,0 +1,13 @@
+﻿@model IEnumerable<ShopQuanAo.Models.Mmenu>
+    @{ var mainmenuitem = ViewBag.mainmenuitem; } 
+<li class="nav-item dropdown active">
+    <a class="nav-link dropdown-toggle dropbtn" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        @mainmenuitem.name
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        @foreach (var item in Model)
+        {
+            <a class="dropdown-item" href="~/sanpham/@item.link">@item.name</a>
+        }
+    </div>
+</li>
